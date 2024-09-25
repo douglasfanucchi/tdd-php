@@ -23,4 +23,16 @@ final class StackTest extends TestCase
         $this->assertEquals(1, $stack->getLength());
         $this->assertEquals(1, $stack->top());
     }
+
+    public function testShouldRemoveAnElementFromAStackThatHas2Elements()
+    {
+        $stack = new Stack();
+        $stack->push(2);
+        $stack->push(1);
+
+        $element = $stack->pop();
+
+        $this->assertEquals(1, $element);
+        $this->assertEquals(2, $stack->top());
+    }
 }
