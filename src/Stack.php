@@ -25,4 +25,9 @@ class Stack
     {
         return 1;
     }
+
+    public function pop() : mixed
+    {
+        return 1;
+    }
 }
