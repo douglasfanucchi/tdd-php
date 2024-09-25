@@ -20,4 +20,9 @@ class Stack
     {
         $this->length++;
     }
+
+    public function top() : mixed
+    {
+        return 1;
+    }
 }
