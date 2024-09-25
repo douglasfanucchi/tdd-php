@@ -8,11 +8,16 @@ class Stack
 
     public function isEmpty() : bool
     {
-        return true;
+        return $this->getLength() == 0;
     }
 
     public function getLength() : int
     {
-        return 0;
+        return $this->length;
+    }
+
+    public function push(mixed $element) : void
+    {
+        $this->length++;
     }
 }
