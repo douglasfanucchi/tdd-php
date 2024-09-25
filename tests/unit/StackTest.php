@@ -21,5 +21,6 @@ final class StackTest extends TestCase
 
         $this->assertFalse($stack->isEmpty());
         $this->assertEquals(1, $stack->getLength());
+        $this->assertEquals(1, $stack->top());
     }
 }
