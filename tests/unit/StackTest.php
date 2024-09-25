@@ -12,4 +12,14 @@ final class StackTest extends TestCase
         $this->assertTrue($stack->isEmpty());
         $this->assertEquals(0, $stack->getLength());
     }
+
+    public function testShouldPutAElementIntoStack()
+    {
+        $stack = new Stack();
+
+        $stack->push(1);
+
+        $this->assertFalse($stack->isEmpty());
+        $this->assertEquals(1, $stack->getLength());
+    }
 }
