@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use TDD\EmptyStackException;
 use TDD\Stack;
 
 final class StackTest extends TestCase
@@ -38,11 +39,11 @@ final class StackTest extends TestCase
         $this->assertEquals(2, $this->stack->top());
     }
 
-    public function testEmptyStackShouldReturnNULLWhenPopIsExecuted()
+    public function testEmptyStackShouldReturnAnExceptionWhenAPopIsPerformed()
     {
-        $element = $this->stack->pop();
+        $this->expectException(EmptyStackException::class);
 
-        $this->assertNull($element);
+        $this->stack->pop();
     }
 
     public function testEmptyStackShouldReturnNULLWhenCheckingTopElement()
