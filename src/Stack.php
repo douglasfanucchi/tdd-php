@@ -26,16 +26,13 @@ class Stack
     public function top() : mixed
     {
         if ($this->isEmpty()) {
-            return null;
+            throw new EmptyStackException("You can not remove element from an empty stack.");
         }
         return $this->elements[$this->length - 1];
     }
 
     public function pop() : mixed
     {
-        if ($this->isEmpty()) {
-            return null;
-        }
         $element = $this->top();
         unset($this->elements[$this->length - 1]);
         $this->length--;
