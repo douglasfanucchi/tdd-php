@@ -30,6 +30,9 @@ class Stack
 
     public function pop() : mixed
     {
+        if ($this->isEmpty()) {
+            return null;
+        }
         $element = $this->top();
         unset($this->elements[$this->length - 1]);
         $this->length--;
