@@ -44,4 +44,13 @@ final class StackTest extends TestCase
 
         $this->assertNull($element);
     }
+
+    public function testEmptyStackShouldReturnNULLWhenCheckingTopElement()
+    {
+        $stack = new Stack();
+
+        $element = $stack->top();
+
+        $this->assertNull($element);
+    }
 }
