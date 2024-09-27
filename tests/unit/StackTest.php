@@ -35,4 +35,13 @@ final class StackTest extends TestCase
         $this->assertEquals(1, $element);
         $this->assertEquals(2, $stack->top());
     }
+
+    public function testEmptyStackShouldReturnNULLWhenPopIsExecuted()
+    {
+        $stack = new Stack();
+
+        $element = $stack->pop();
+
+        $this->assertNull($element);
+    }
 }
