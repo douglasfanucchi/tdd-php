@@ -25,6 +25,9 @@ class Stack
 
     public function top() : mixed
     {
+        if ($this->isEmpty()) {
+            return null;
+        }
         return $this->elements[$this->length - 1];
     }
 
