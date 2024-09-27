@@ -46,10 +46,10 @@ final class StackTest extends TestCase
         $this->stack->pop();
     }
 
-    public function testEmptyStackShouldReturnNULLWhenCheckingTopElement()
+    public function testEmptyStackShouldThrowAnExceptionWhenCheckingStackTop()
     {
-        $element = $this->stack->top();
+        $this->expectException(EmptyStackException::class);
 
-        $this->assertNull($element);
+        $this->stack->top();
     }
 }
