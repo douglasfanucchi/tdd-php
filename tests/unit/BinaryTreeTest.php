@@ -67,6 +67,20 @@ final class BinaryTreeTest extends TestCase
         $this->assertTrue($this->tree->isEmpty());
     }
 
+    public function testShouldDeleteRootFromAMultipleNodeBinaryTree()
+    {
+        $this->tree->insert(2);
+        $this->tree->insert(1);
+        $this->tree->insert(3);
+        $expectedRoot = new BTNode(1, null, new BTNode(3));
+
+        $this->tree->delete(2);
+        $root = $this->tree->getNode(1);
+
+        $this->assertFalse($this->tree->isEmpty());
+        $this->assertObjectEquals($expectedRoot, $root);
+    }
+
     public function testShouldDeleteUnexistingElement()
     {
         $this->tree->insert(1);
