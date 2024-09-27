@@ -5,51 +5,49 @@ use TDD\Stack;
 
 final class StackTest extends TestCase
 {
+    protected Stack $stack;
+
+    protected function setUp(): void
+    {
+        $this->stack = new Stack();
+    }
+
     public function testStackShouldBeEmpty()
     {
-        $stack = new Stack();
-
-        $this->assertTrue($stack->isEmpty());
-        $this->assertEquals(0, $stack->getLength());
+        $this->assertTrue($this->stack->isEmpty());
+        $this->assertEquals(0, $this->stack->getLength());
     }
 
     public function testShouldPutAElementIntoStack()
     {
-        $stack = new Stack();
+        $this->stack->push(1);
 
-        $stack->push(1);
-
-        $this->assertFalse($stack->isEmpty());
-        $this->assertEquals(1, $stack->getLength());
-        $this->assertEquals(1, $stack->top());
+        $this->assertFalse($this->stack->isEmpty());
+        $this->assertEquals(1, $this->stack->getLength());
+        $this->assertEquals(1, $this->stack->top());
     }
 
     public function testShouldRemoveAnElementFromAStackThatHas2Elements()
     {
-        $stack = new Stack();
-        $stack->push(2);
-        $stack->push(1);
+        $this->stack->push(2);
+        $this->stack->push(1);
 
-        $element = $stack->pop();
+        $element = $this->stack->pop();
 
         $this->assertEquals(1, $element);
-        $this->assertEquals(2, $stack->top());
+        $this->assertEquals(2, $this->stack->top());
     }
 
     public function testEmptyStackShouldReturnNULLWhenPopIsExecuted()
     {
-        $stack = new Stack();
-
-        $element = $stack->pop();
+        $element = $this->stack->pop();
 
         $this->assertNull($element);
     }
 
     public function testEmptyStackShouldReturnNULLWhenCheckingTopElement()
     {
-        $stack = new Stack();
-
-        $element = $stack->top();
+        $element = $this->stack->top();
 
         $this->assertNull($element);
     }
