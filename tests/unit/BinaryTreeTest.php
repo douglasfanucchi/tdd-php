@@ -28,7 +28,7 @@ final class BinaryTreeTest extends TestCase
         $this->assertTrue($this->tree->hasElement(1));
     }
 
-    public function testShouldnsertMultipleElementsIntoBinaryTree()
+    public function testShouldInsertMultipleElementsIntoBinaryTree()
     {
         $this->tree->insert(2);
         $this->tree->insert(1);
