@@ -190,4 +190,21 @@ final class BinaryTreeTest extends TestCase
         );
         $this->assertEquals(2, $index);
     }
+
+    public function testShouldTraverseABinaryTreeWithTwoElementsBeingTheSecondNodeTheRightOne()
+    {
+        $this->tree->insert(2);
+        $this->tree->insert(3);
+        $expectedOrder = [2, 3];
+        $index = 0;
+
+        $this->tree->inOrder(
+            function(mixed $element) use ($expectedOrder, &$index) {
+                $expected = $expectedOrder[$index];
+                $this->assertEquals($expected, $element);
+                $index++;
+            }
+        );
+        $this->assertEquals(2, $index);
+    }
 }
