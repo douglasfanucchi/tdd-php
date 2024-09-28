@@ -93,6 +93,21 @@ final class BinaryTreeTest extends TestCase
         $this->assertObjectEquals($expectedRoot, $root);
     }
 
+    public function testDeleteElementFromASubtree()
+    {
+        $this->tree->insert(3);
+        $this->tree->insert(4);
+        $this->tree->insert(2);
+        $this->tree->insert(0);
+        $this->tree->insert(1);
+        $expected = new BTNode(1);
+
+        $this->tree->delete(0);
+
+        $node = $this->tree->getNode(2);
+        $this->assertEquals($expected, $node->left);
+    }
+
     public function testShouldDeleteUnexistingElement()
     {
         $this->tree->insert(1);
