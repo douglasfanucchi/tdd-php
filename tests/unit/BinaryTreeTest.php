@@ -227,4 +227,10 @@ final class BinaryTreeTest extends TestCase
         );
         $this->assertEquals(5, $index);
     }
+
+    public function testShouldPreorderTraverseAnEmptyBinaryTree()
+    {
+        $this->expectException(EmptyTreeException::class);
+        $this->tree->preOrder();
+    }
 }
