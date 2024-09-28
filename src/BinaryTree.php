@@ -123,4 +123,9 @@ class BinaryTree
         }
         return $this->search($element, $this->root);
     }
+
+    public function inOrder(callable $func) : void
+    {
+        $func(1);
+    }
 }
