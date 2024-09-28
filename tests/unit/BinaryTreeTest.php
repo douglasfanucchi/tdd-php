@@ -155,4 +155,22 @@ final class BinaryTreeTest extends TestCase
         );
         $this->assertEquals(1, $index);
     }
+
+    public function testShouldTraverseACompleteBinaryTreeWith3Element()
+    {
+        $this->tree->insert(2);
+        $this->tree->insert(1);
+        $this->tree->insert(3);
+        $expectedOrder = [1, 2, 3];
+        $index = 0;
+
+        $this->tree->inOrder(
+            function(mixed $element) use ($expectedOrder, &$index) {
+                $expected = $expectedOrder[$index];
+                $this->assertEquals($expected, $element);
+                $index++;
+            }
+        );
+        $this->assertEquals(3, $index);
+    }
 }
