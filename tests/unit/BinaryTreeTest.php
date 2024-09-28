@@ -153,5 +153,6 @@ final class BinaryTreeTest extends TestCase
                 $index++;
             }
         );
+        $this->assertEquals(1, $index);
     }
 }
