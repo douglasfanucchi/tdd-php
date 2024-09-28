@@ -139,4 +139,19 @@ final class BinaryTreeTest extends TestCase
         $this->expectException(EmptyTreeException::class);
         $this->tree->getNode(1);
     }
+
+    public function testShouldTraverseBinaryTreeWithSingleNode()
+    {
+        $this->tree->insert(1);
+        $expectedOrder = [1];
+        $index = 0;
+
+        $this->tree->inOrder(
+            function(mixed $element) use ($expectedOrder, &$index) {
+                $expected = $expectedOrder[$index];
+                $this->assertEquals($expected, $element);
+                $index++;
+            }
+        );
+    }
 }
