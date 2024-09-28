@@ -126,6 +126,16 @@ class BinaryTree
 
     public function inOrder(callable $func) : void
     {
-        $func(1);
+        $this->inOrderRecursive($func, $this->root);
+    }
+
+    protected function inOrderRecursive(callable $func, BTNode|null $root)
+    {
+        if (!$root) {
+            return;
+        }
+        $this->inOrderRecursive($func, $root->left);
+        $func($root->value);
+        $this->inOrderRecursive($func, $root->right);
     }
 }
