@@ -76,7 +76,30 @@ class BinaryTree
         if (!$this->hasElement($element)) {
             throw new TreeElementNotFoundException("element not found");
         }
-        $this->root = null;
+        $this->recursiveDelete($element, $this->root);
+    }
+
+    protected function recursiveDelete(mixed $element, BTNode|null &$root) : void
+    {
+        if ($root->value != $element) {
+            if ($root->value < $element) {
+                $this->recursiveDelete($element, $root->right);
+                return;
+            }
+            $this->recursiveDelete($element, $root->left);
+            return;
+        }
+        if (!$root->left && !$root->right) {
+            $root = null;
+            return;
+        }
+        if ($root->left) {
+            $root->left->right = $root->right;
+            $root = $root->left;
+            return;
+        }
+        $root = $root->right;
+        $root->left = null;
     }
 
     protected function search(mixed $element, BTNode|null $root) : BTNode
