@@ -138,4 +138,9 @@ class BinaryTree
         $func($root->value);
         $this->inOrderRecursive($func, $root->right);
     }
+
+    public function preOrder() : void
+    {
+        throw new EmptyTreeException("empty tree");
+    }
 }
