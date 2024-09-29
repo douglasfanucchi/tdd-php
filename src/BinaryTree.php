@@ -156,4 +156,22 @@ class BinaryTree
         $this->preOrderRecursive($func, $root->left);
         $this->preOrderRecursive($func, $root->right);
     }
+
+    public function postOrder(callable $func) : void
+    {
+        if ($this->isEmpty()) {
+            throw new EmptyTreeException("empty tree");
+        }
+        $this->postOrderRecursive($func, $this->root);
+    }
+
+    protected function postOrderRecursive(callable $func, BTNode|null $root) : void
+    {
+        if(!$root) {
+            return;
+        }
+        $this->postOrderRecursive($func, $root->right);
+        $func($root->value);
+        $this->postOrderRecursive($func, $root->left);
+    }
 }
