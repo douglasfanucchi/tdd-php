@@ -255,6 +255,15 @@ final class BinaryTreeTest extends TestCase
         $this->assertTraverse('postOrder', $expectedOrder);
     }
 
+    public function testPostorderTraverseABinaryTreeWithRootAndLeftNode()
+    {
+        $this->tree->insert(2);
+        $this->tree->insert(1);
+        $expectedOrder = [2, 1];
+
+        $this->assertTraverse('postOrder', $expectedOrder);
+    }
+
     protected function assertTraverse(string $traverseOrder, array $expectedOrder)
     {
         $index = 0;
