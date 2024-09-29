@@ -194,6 +194,15 @@ final class BinaryTreeTest extends TestCase
         $this->assertTraverse('preOrder', []);
     }
 
+    public function testShouldPreorderTraverseAOneNodeBinaryTree()
+    {
+        $this->tree->insert(1);
+        $expectedOrder = [1];
+
+        $this->assertTraverse('preOrder', $expectedOrder);
+    }
+
+
     protected function assertTraverse(string $traverseOrder, array $expectedOrder)
     {
         $index = 0;
