@@ -232,6 +232,12 @@ final class BinaryTreeTest extends TestCase
         $this->assertTraverse('preOrder', $expectedOrder);
     }
 
+    public function testShouldPostorderTraverseAnEmptyBinaryTree()
+    {
+        $this->expectException(EmptyTreeException::class);
+        $this->assertTraverse('postOrder', []);
+    }
+
     protected function assertTraverse(string $traverseOrder, array $expectedOrder)
     {
         $index = 0;
