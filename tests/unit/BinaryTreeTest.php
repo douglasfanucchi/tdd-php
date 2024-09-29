@@ -144,16 +144,8 @@ final class BinaryTreeTest extends TestCase
     {
         $this->tree->insert(1);
         $expectedOrder = [1];
-        $index = 0;
-
-        $this->tree->inOrder(
-            function(mixed $element) use ($expectedOrder, &$index) {
-                $expected = $expectedOrder[$index];
-                $this->assertEquals($expected, $element);
-                $index++;
-            }
-        );
-        $this->assertEquals(1, $index);
+        
+        $this->assertTraverse('inOrder', $expectedOrder);
     }
 
     public function testShouldTraverseACompleteBinaryTreeWith3Element()
@@ -162,16 +154,8 @@ final class BinaryTreeTest extends TestCase
         $this->tree->insert(1);
         $this->tree->insert(3);
         $expectedOrder = [1, 2, 3];
-        $index = 0;
 
-        $this->tree->inOrder(
-            function(mixed $element) use ($expectedOrder, &$index) {
-                $expected = $expectedOrder[$index];
-                $this->assertEquals($expected, $element);
-                $index++;
-            }
-        );
-        $this->assertEquals(3, $index);
+        $this->assertTraverse('inOrder', $expectedOrder);
     }
 
     public function testShouldTraverseABinaryTreeWithTwoElementsBeingTheSecondNodeTheLeftOne()
@@ -179,16 +163,8 @@ final class BinaryTreeTest extends TestCase
         $this->tree->insert(2);
         $this->tree->insert(1);
         $expectedOrder = [1, 2];
-        $index = 0;
 
-        $this->tree->inOrder(
-            function(mixed $element) use ($expectedOrder, &$index) {
-                $expected = $expectedOrder[$index];
-                $this->assertEquals($expected, $element);
-                $index++;
-            }
-        );
-        $this->assertEquals(2, $index);
+        $this->assertTraverse('inOrder', $expectedOrder);
     }
 
     public function testShouldTraverseABinaryTreeWithTwoElementsBeingTheSecondNodeTheRightOne()
@@ -196,16 +172,8 @@ final class BinaryTreeTest extends TestCase
         $this->tree->insert(2);
         $this->tree->insert(3);
         $expectedOrder = [2, 3];
-        $index = 0;
 
-        $this->tree->inOrder(
-            function(mixed $element) use ($expectedOrder, &$index) {
-                $expected = $expectedOrder[$index];
-                $this->assertEquals($expected, $element);
-                $index++;
-            }
-        );
-        $this->assertEquals(2, $index);
+        $this->assertTraverse('inOrder', $expectedOrder);
     }
 
     public function testShouldTraverseABinaryTreeWithSubtrees()
@@ -216,22 +184,14 @@ final class BinaryTreeTest extends TestCase
         $this->tree->insert(0);
         $this->tree->insert(1);
         $expectedOrder = [0, 1, 2, 3, 4];
-        $index = 0;
 
-        $this->tree->inOrder(
-            function(mixed $element) use ($expectedOrder, &$index) {
-                $expected = $expectedOrder[$index];
-                $this->assertEquals($expected, $element);
-                $index++;
-            }
-        );
-        $this->assertEquals(5, $index);
+        $this->assertTraverse('inOrder', $expectedOrder);
     }
 
     public function testShouldPreorderTraverseAnEmptyBinaryTree()
     {
         $this->expectException(EmptyTreeException::class);
-        $this->tree->preOrder();
+        $this->assertTraverse('preOrder', []);
     }
 
     protected function assertTraverse(string $traverseOrder, array $expectedOrder)
