@@ -233,4 +233,14 @@ final class BinaryTreeTest extends TestCase
         $this->expectException(EmptyTreeException::class);
         $this->tree->preOrder();
     }
+
+    protected function assertTraverse(string $traverseOrder, array $expectedOrder)
+    {
+        $index = 0;
+        $this->tree->$traverseOrder(function($element) use(&$index, $expectedOrder) {
+            $this->assertEquals($expectedOrder[$index], $element);
+            $index++;
+        });
+        $this->assertEquals(count($expectedOrder), $index);
+    }
 }
